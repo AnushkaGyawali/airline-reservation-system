@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airlines Reservation System</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script defer src="../assets/js/script.js"></script>
+</head>
+<body><header>
+    <nav>
+        <a href="index.html">Search Flights</a> |
+        <a href="reservations.html">My Reservations</a> |
+        <span id="authButtons">
+            <a href="login.html" id="loginBtn">Login/Register</a>
+            <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+        </span>
+    </nav>
+    <hr>
+</header>
+
+    <h1>Search Flights</h1>
+
+    <!-- 🔍 Search Form -->
+    <form id="flightSearchForm">
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" required>
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" required>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    <!-- 📋 Flight Results -->
+    <div id="results">
+        <h2>Available Flights</h2>
+        <table id="flightsTable" border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Seats</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic content inserted here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Reservations</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script defer src="../assets/js/script.js"></script>
+</head>
+<body><header>
+    <nav>
+        <a href="index.html">Search Flights</a> |
+        <a href="reservations.html">My Reservations</a> |
+        <span id="authButtons">
+            <a href="login.html" id="loginBtn">Login/Register</a>
+            <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+        </span>
+    </nav>
+    <hr>
+</header>
+
+    <h1>My Reservations</h1>
+
+    <table id="reservationsTable" border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Booked At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic rows will be inserted here -->
+        </tbody>
+    </table>
+</body>
+</html>
