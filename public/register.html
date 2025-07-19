@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+  <a class="navbar-brand" href="index.html">Airline System</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContentRegister" aria-controls="navbarContentRegister" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarContentRegister"></div>
+</nav>
+
+<div class="container py-5 d-flex justify-content-center align-items-center">
+  <div class="card shadow p-4" style="min-width: 350px; max-width: 500px; width: 100%;">
+    <h3 class="mb-3 text-center">Register</h3>
+    <form id="registerForm" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="username">Username</label>
+        <input id="username" type="text" name="username" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input id="email" type="email" name="email" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input id="password" type="password" name="password" class="form-control" required minlength="6" autocomplete="off" />
+      </div>
+      <button type="submit" class="btn btn-success w-100">Register</button>
+      <p id="registerMsg" class="mt-2 text-center"></p>
+    </form>
+    <p class="text-center mt-3">Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const registerMsg = document.getElementById("registerMsg");
+  document.getElementById("registerForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    registerMsg.textContent = "";
+    registerMsg.className = "";
+
+    const formData = new FormData(this);
+    try {
+      const response = await fetch("../auth/register.php", {
+        method: "POST",
+        body: formData
+      });
+      const result = await response.json();
+      registerMsg.textContent = result.message;
+      if (result.success) {
+        registerMsg.classList.add("text-success");
+        setTimeout(() => window.location.href = "login.html", 1500);
+      } else {
+        registerMsg.classList.add("text-danger");
+      }
+    } catch {
+      registerMsg.textContent = "Server error. Please try again later.";
+      registerMsg.classList.add("text-danger");
+    }
+  });
+</script>
+</body>
+</html>

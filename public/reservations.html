@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Reservations</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <script defer src="../assets/js/script.js"></script>
+  <meta charset="UTF-8" />
+  <title>My Reservations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script defer src="../assets/js/script.js"></script>
 </head>
-<body><header>
-    <nav>
-        <a href="index.html">Search Flights</a> |
-        <a href="reservations.html">My Reservations</a> |
-        <span id="authButtons">
-            <a href="login.html" id="loginBtn">Login/Register</a>
-            <a href="#" id="logoutBtn" style="display:none;">Logout</a>
-        </span>
-    </nav>
-    <hr>
-</header>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+  <a class="navbar-brand" href="index.html">Airline System</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContentRes" aria-controls="navbarContentRes" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarContentRes">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="index.html">Search Flights</a></li>
+      <li class="nav-item"><a class="nav-link active" href="reservations.html">My Reservations</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a id="loginBtn" class="nav-link" href="login.html">Login/Register</a></li>
+      <li class="nav-item"><a id="logoutBtn" class="nav-link" href="../logout.php" style="display: none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <h1>My Reservations</h1>
+<div class="container py-4">
+  <h2 class="mb-3">My Reservations</h2>
+  <div id="reservationsContainer" class="border rounded p-3 bg-light shadow-sm">
+    <!-- Reservations will load here -->
+  </div>
+</div>
 
-    <table id="reservationsTable" border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Flight Number</th>
-                <th>Origin</th>
-                <th>Destination</th>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <th>Booked At</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dynamic rows will be inserted here -->
-        </tbody>
-    </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

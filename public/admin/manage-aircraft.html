@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><title>Manage Aircraft</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head><body>
+<header>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>|<a href="manage-flights.html">Flights</a>|
+    <a href="manage-aircraft.html">Aircraft</a>|<a href="view-bookings.html">Bookings</a>|
+    <a href="../../logout.php">Logout</a>
+  </nav>
+</header>
+<main>
+  <h1>Aircraft</h1>
+  <form id="aircraftForm">
+    <input type="hidden" name="id" />
+    <label>Model:<input name="model" required /></label>
+    <label>Total Seats:<input name="total_seats" type="number" min="1" required /></label>
+    <label>Seat Config (JSON):<textarea name="seat_config" required></textarea></label>
+    <button type="submit">Save</button>
+    <button type="button" id="aircraftReset">New</button>
+  </form>
+  <table id="aircraftTable"><thead>
+    <tr><th>ID</th><th>Model</th><th>Seats</th><th>Config</th><th>Actions</th></tr>
+  </thead><tbody></tbody></table>
+</main>
+<script src="../../assets/js/admin.js"></script>
+</body></html>

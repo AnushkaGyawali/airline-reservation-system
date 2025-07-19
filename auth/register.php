@@ -1,35 +1,28 @@
 <?php
-session_start();
 require_once '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get user input
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $full_name = trim($_POST['full_name']);
+    $username = htmlspecialchars(trim($_POST['username']));
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $password = trim($_POST['password']);
 
-    // Validate input
     if (empty($username) || empty($email) || empty($password)) {
-        die("All fields are required.");
+        echo json_encode(["success" => false, "message" => "All fields are required."]);
+        exit;
     }
 
-    // Check if user already exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-    $stmt->execute([$username, $email]);
-    if ($stmt->fetch()) {
-        die("Username or email already taken.");
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $email, $hashed_password);
+
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true, "message" => "User registered successfully."]);
+    } else {
+        echo json_encode(["success" => false, "message" => "Email already exists or error occurred."]);
     }
 
-    // Hash password
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert into database
-    $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash, full_name) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$username, $email, $password_hash, $full_name]);
-
-    echo "Registration successful. You may now log in.";
-} else {
-    echo "Invalid request method.";
+    $stmt->close();
+    $conn->close();
 }
 ?>

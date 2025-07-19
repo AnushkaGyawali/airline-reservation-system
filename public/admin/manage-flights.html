@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><title>Manage Flights</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head><body>
+<header>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>|<a href="manage-flights.html">Flights</a>|
+    <a href="manage-aircraft.html">Aircraft</a>|<a href="view-bookings.html">Bookings</a>|
+    <a href="../../logout.php">Logout</a>
+  </nav>
+</header>
+<main>
+  <h1>Flights</h1>
+  <form id="flightForm">
+    <input type="hidden" name="flight_id" />
+    <label>Number:<input name="flight_number" required /></label>
+    <label>Origin:<input name="origin" required /></label>
+    <label>Destination:<input name="destination" required /></label>
+    <label>Departure:<input name="departure_time" type="datetime-local" required /></label>
+    <label>Arrival:<input name="arrival_time"   type="datetime-local" required /></label>
+    <label>Seats:<input name="available_seats" type="number" min="1" required /></label>
+    <label>Aircraft:
+      <select name="aircraft_id" id="flightAircraft"></select>
+    </label>
+    <label>Prices (JSON):<textarea name="seat_prices" required></textarea></label>
+    <button type="submit">Save</button>
+    <button type="button" id="flightReset">New</button>
+  </form>
+  <table id="flightsTable"><thead>
+    <tr><th>ID</th><th>Number</th><th>Route</th><th>Times</th><th>Seats</th><th>Aircraft</th><th>Actions</th></tr>
+  </thead><tbody></tbody></table>
+</main>
+<script src="../../assets/js/admin.js"></script>
+</body></html>
