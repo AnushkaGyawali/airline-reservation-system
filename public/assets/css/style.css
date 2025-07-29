@@ -1,0 +1,281 @@
+/* style.css - Custom ARS styles */
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+  background-color: #f8f9fa; /* Light background for overall page */
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+/* Custom styles for rounded inputs and textareas */
+.form-control.rounded-pill,
+.form-select.rounded-pill {
+  border-radius: 50rem !important; /* Fully rounded */
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.form-control.rounded-3 {
+  border-radius: 0.75rem !important; /* More rounded corners for textareas */
+}
+
+/* Hero Section Enhancements */
+.hero {
+  background: linear-gradient(to right, #007bff, #00c6ff); /* Existing gradient */
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Ensures pseudo-element stays within bounds */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+  transform: rotate(45deg);
+  animation: hero-animation 15s infinite linear; /* Animation for subtle movement */
+  z-index: 0; /* Behind content */
+}
+
+@keyframes hero-animation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1; /* Ensure content is above the animated background */
+}
+
+/* Features Section Card Enhancements */
+.features .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.75rem; /* More rounded corners */
+  overflow: hidden;
+  border: none; /* Remove default border */
+}
+
+.features .card:hover {
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important; /* Stronger shadow on hover */
+}
+
+.features .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.features .card-title {
+  color: #343a40; /* Darker text for titles */
+}
+
+/* Stats Section Enhancements */
+.stats {
+  background-color: #007bff; /* Primary blue background */
+  padding: 60px 0;
+  color: white;
+}
+
+.stat-box {
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transition: transform 0.3s ease;
+  color: #007bff; /* Primary blue text for stats */
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+}
+
+.stat-box h4 {
+  font-size: 3.5rem; /* Larger font for numbers */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Search Form Enhancements */
+#searchForm {
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 1rem; /* More rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+#searchForm .form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+#searchForm .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#searchForm .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+#swapBtn {
+  font-size: 1.2rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+#swapBtn:hover {
+  transform: rotate(90deg);
+}
+
+/* Flight Results Skeleton Loader */
+.skeleton-loader {
+  background-color: #e9ecef;
+  animation: pulse 1.5s infinite ease-in-out;
+  border-radius: 0.5rem;
+}
+
+@keyframes pulse {
+  0% { background-color: #e9ecef; }
+  50% { background-color: #dee2e6; }
+  100% { background-color: #e9ecef; }
+}
+
+/* Flight Card Styling */
+.flight-card {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.flight-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.flight-card .accordion-header {
+  cursor: pointer;
+  background-color: #f8f9fa;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: #343a40;
+  transition: background-color 0.2s ease;
+}
+
+.flight-card .accordion-header:hover {
+  background-color: #e9ecef;
+}
+
+.flight-card .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  padding: 0 1rem; /* Initial padding */
+  border-top: 1px solid #e9ecef;
+  color: #6c757d;
+}
+
+.flight-card .accordion-content.open {
+  max-height: 200px; /* Adjust as needed for content height */
+  padding-top: 1rem; /* Add padding when open */
+  padding-bottom: 1rem;
+  transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+
+/* Contact Section Map */
+.map-container {
+  height: 250px; /* Fixed height for the map iframe container */
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Footer Social Icons */
+footer .bi {
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+footer .bi:hover {
+  color: #007bff; /* Primary blue on hover */
+}
+
+/* Custom Modal Styling */
+#customModal .modal-content {
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#customModal .modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+#customModal .modal-body {
+  font-size: 1.1rem;
+  color: #343a40;
+  text-align: center;
+  padding-top: 0;
+}
+
+#customModal .modal-footer {
+  border-top: none;
+  justify-content: center;
+  padding-top: 0;
+}
+
+#customModal .btn {
+  border-radius: 50rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 767.98px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .stat-box h4 {
+    font-size: 2.5rem;
+  }
+  #searchForm .col-md-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

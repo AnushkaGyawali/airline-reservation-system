@@ -1,6 +1,6 @@
 <?php
 require_once '../auth_check.php';
-require_once '../../config/db.php';
+require_once '../config/db.php';
 
 $sql = "
   SELECT r.reservation_id,u.username,u.email,

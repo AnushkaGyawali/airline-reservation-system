@@ -1,6 +1,6 @@
 <?php
 require_once '../auth_check.php';
-require_once '../../config/db.php';
+require_once '../config/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $data = json_decode(file_get_contents('php://input'), true);

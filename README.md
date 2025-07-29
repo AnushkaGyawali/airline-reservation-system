@@ -1,115 +1,133 @@
-# ✈️ Airline Reservation System
+# ✈️ Airlines Reservation System
 
-A full-stack airline reservation system built using **PHP**, **MySQL**, **Bootstrap**, and **JavaScript**. Users can register, log in, search flights, book and cancel tickets, and view their booking history.
-
----
-
-## 📌 Features
-
-- ✅ User Registration and Login (with password hashing)
-- 🔐 Secure Session Management
-- 🔍 Flight Search and Listing
-- 📦 Booking and Cancellation with real-time seat updates
-- 🧾 Reservation History Dashboard
-- 📱 Responsive UI with Bootstrap
+A web-based flight booking platform that allows users to search, book, cancel, and manage airline tickets. Designed to be responsive and user-friendly for both passengers and administrators.
 
 ---
 
-## 🧱 Tech Stack
+## 🎯 Objective
 
-| Layer         | Tools / Technologies         |
-|---------------|------------------------------|
-| Frontend      | HTML, CSS, JavaScript, Bootstrap |
-| Backend       | PHP                           |
-| Database      | MySQL                         |
-| Communication | Fetch API / AJAX             |
+To develop a responsive and dynamic airline reservation system that supports user authentication, real-time seat availability, and administrative management for flights and bookings.
 
 ---
 
-## 🚀 Installation & Setup
+## 🧰 Tech Stack
 
-### ✅ Prerequisites
-
-- PHP 7.4+
-- MySQL
-- Apache or XAMPP/LAMP/MAMP
-
-### ⚙️ Steps
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/AnushkaGyawali/airline-reservation-system
-    ```
-2.  **Import the Database**
-    Open phpMyAdmin or MySQL CLI.
-    Create a database (e.g., `airline_db`).
-    Import `schema.sql` into your database.
-3.  **Configure Database**
-    Update `config/db.php` with your MySQL credentials.
-4.  **Start the Server**
-    Use Apache or PHP built-in server:
-    ```bash
-    php -S localhost:8000 -t public
-    ```
-5.  **Open in Browser**
-    Navigate to: `http://localhost:8000`
+- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap
+- **Backend**: PHP (Native)
+- **Database**: MySQL
+- **Optional Tools**: phpMyAdmin, Ajax
 
 ---
 
-## 🔐 Authentication
+## 👤 User Roles
 
--   **Register**: `/public/register.html`
--   **Login**: `/public/login.html`
--   Uses `password_hash()` and `password_verify()` for secure password handling.
--   Session management is handled via PHP `$_SESSION`.
+- **Passenger**: Book, view, cancel flights
+- **Admin**: Manage flights, bookings, and users
 
 ---
 
-## 🔍 Flight Search
+## 🔐 Core Features
 
--   A form to search flights is available on `public/index.html`.
--   Fetches available flights from `api/flights.php`.
--   Displays results with real-time seat availability.
+### 🔹 Passenger Module
 
----
+- User Registration & Login
+- Flight Search (origin, destination, date)
+- Real-time Seat Availability
+- Booking Confirmation & Cancellation
+- Booking History Dashboard
+- Download/Print Booking Details (PDF or Modal)
+- Mobile-Responsive Design
 
-## 📦 Book & Cancel Reservations
+### 🔹 Admin Module
 
--   **Booking**: Send a `POST` request to `api/reservations.php` to book a flight.
--   **Cancellation**: Send a `DELETE` request to `api/reservations.php` with the `reservation_id` to cancel a booking.
--   Seat counts are updated in real-time to reflect availability.
-
----
-
-## 🧾 My Reservations
-
--   View your booking history on `/public/reservations.html`.
--   This page is protected via a session check to ensure only authenticated users can view their reservations.
--   Lists all your bookings with options to cancel.
+- Admin Authentication
+- Add/Update/Delete Flights
+- View All Bookings & Registered Users
+- Manage Seat Map (optional)
 
 ---
 
-## 📁 Folder Structure
-airline-reservation-system/
-├── api/                   # API endpoints (book, cancel, fetch data)
-│   ├── flights.php
-│   ├── reservations.php
-│   ├── user_reservations.php
-│   └── check_session.php
-├── assets/
-│   └── js/
-│       └── script.js      # Frontend logic (search, reservation)
-├── auth/                  # Authentication system
-│   ├── login.php
-│   ├── logout.php
-│   └── register.php
-├── config/
-│   └── db.php             # Database connection setup
-├── public/                # Public HTML pages
-│   ├── index.html
-│   ├── login.html
-│   ├── register.html
-│   └── reservations.html
-├── README.md              # Project README file
-└── schema.sql             # Database schema
-## I have later on added some admin side files which can be edited according to requirements.
+## 💡 Optional Features
+
+- Clickable Seat Map UI
+- Flight Filters (Non-stop, Time Window)
+- Email Booking Confirmation
+- Booking Timeline Modal / Receipt View
+
+---
+
+## 🗃️ Database Schema
+
+### `users`
+| Field       | Type           | Description               |
+|-------------|----------------|---------------------------|
+| id          | INT (PK)       | Unique user ID            |
+| username    | VARCHAR(50)    | Name of user              |
+| email       | VARCHAR(100)   | Unique email address      |
+| password    | VARCHAR(255)   | Hashed password           |
+| created_at  | TIMESTAMP      | Account creation date     |
+
+### `flights`
+| Field           | Type           | Description                  |
+|------------------|----------------|------------------------------|
+| id               | INT (PK)       | Unique flight ID             |
+| flight_number    | VARCHAR(20)    | Unique flight code           |
+| origin           | VARCHAR(100)   | Departure city               |
+| destination      | VARCHAR(100)   | Arrival city                 |
+| departure_time   | DATETIME       | Flight departure time        |
+| available_seats  | INT            | Remaining seats              |
+
+### `reservations`
+| Field       | Type           | Description                   |
+|-------------|----------------|-------------------------------|
+| id          | INT (PK)       | Unique booking ID             |
+| user_id     | INT (FK)       | Linked to `users(id)`         |
+| flight_id   | INT (FK)       | Linked to `flights(id)`       |
+| reserved_at | TIMESTAMP      | Time of booking               |
+
+---
+
+## 🚀 How to Run Locally
+
+1. Clone this repository
+2. Import `schema.sql` in phpMyAdmin
+3. Configure `config/db.php` with your MySQL credentials
+4. Serve the project via XAMPP/Laragon/MAMP
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of:
+- Homepage
+- Booking Form
+- Admin Dashboard
+- Booking History
+
+---
+
+## 🌐 Live Demo
+
+_Optional – add hosted demo link if available_
+
+---
+
+## 📂 Folder Structure
+
+- `/public` – Public-facing HTML, CSS, JS
+- `/backend/api` – PHP APIs for bookings, flights, users
+- `/backend/auth` – User and admin auth logic
+- `/backend/config` – DB connection and constants
+- `/backend/database` – SQL schema and seeders
+
+---
+
+## 🪪 License
+
+This project is under the **Non-Commercial Use Only** license. You may clone, modify, and use it for personal or academic purposes, but **not** for commercial redistribution or deployment.
+
+---
+
+## 🙋‍♀️ Questions or Feedback?
+
+Feel free to reach out or create an issue in the repository!
