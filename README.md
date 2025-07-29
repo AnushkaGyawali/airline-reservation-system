@@ -15,7 +15,7 @@ To develop a responsive and dynamic airline reservation system that supports use
 - **Frontend**: HTML5, CSS3, JavaScript, Bootstrap
 - **Backend**: PHP (Native)
 - **Database**: MySQL
-- **Optional Tools**: phpMyAdmin, Ajax
+- **Optional Tools**: phpMyAdmin
 
 ---
 
