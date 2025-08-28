@@ -98,7 +98,6 @@ To develop a responsive and dynamic airline reservation system that supports use
 
 ## 📸 Screenshots
 
-Add screenshots of:
 - Homepage
 - Booking Form
 - Admin Dashboard
@@ -108,7 +107,7 @@ Add screenshots of:
 
 ## 🌐 Live Demo
 
-_Optional – add hosted demo link if available_
+https://airlineticket.netlify.app
 
 ---
 
